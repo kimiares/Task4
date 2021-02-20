@@ -1,0 +1,114 @@
+﻿@model IEnumerable<UsersTask4.Models.User>
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="btn-toolbar" aria-label="Toolbar with button groups">
+
+
+</div>
+<form  asp-controller="Home">
+   
+    @*<button type="submit" class="btn btn-outline-danger" value="DeleteButton">DELETE</button>
+        <button type="submit" class="btn btn-outline-danger" value="BlockButton">BLOCK</button>
+        <button type="submit" class="btn btn-outline-danger" value="UnblockButton">UNBLOCK</button>*@
+    <input class="btn btn-outline-danger" type="submit" name="submit" value="Delete" formmethod="post" formaction="~/Home/MultiplyDelete"/>
+    <input class="btn btn-outline-info" type="submit" name="submit" value="Block" formmethod="post" formaction="~/Home/MultiplyBlock"/>
+    <input class="btn btn-outline-success" type="submit" name="submit" value="Unblock" formmethod="post" formaction="~/Home/MultiplyUnblock"/>
+
+    <table class="table table-borderless">
+        <thead class="thead-light text-dark">
+        <tr>
+            <th>
+                <input type="checkbox" id="check_all" onclick="CheckAll('chek', this)"> Check all
+
+            </th>
+            
+            <th>
+                Name
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Date of Registration
+            </th>
+            <th>
+                Last login
+            </th>
+            <th>
+                Status
+            </th>
+
+
+        </tr>
+            </thead>
+
+        @foreach (var i in Model)
+        {
+            <tr>
+                <td>
+
+
+                    <input type="checkbox" name="usersToDeleteIds" value="@i.Id" class="chek">
+
+
+
+
+                </td>
+                
+                <td>
+                    @Html.DisplayFor(mitem => i.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(mitem => i.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(mitem => i.DateOfRegistration)
+                </td>
+                <td>
+                    @Html.DisplayFor(mitem => i.LastLogin)
+                </td>
+                <td>
+                    @Html.DisplayFor(mitem => i.IsActive)
+                </td>
+
+
+            </tr>
+
+
+        }
+    </table>
+</form>
+
+
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+   
+
+    <script>
+        function CheckAll(className, elem) {
+            var elements = document.getElementsByClassName(className);
+            var l = elements.length;
+
+            if (elem.checked) {
+                for (var i = 0; i < l; i++) {
+                    elements[i].checked = true;
+                }
+            } else {
+                for (var i = 0; i < l; i++) {
+                    elements[i].checked = false;
+                }
+            }
+        }
+
+    </script>
+    
+
+
+
+

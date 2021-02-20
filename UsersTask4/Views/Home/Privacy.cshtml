@@ -1,0 +1,47 @@
+﻿@{
+    ViewData["Title"] = "Privacy Policy";
+    Layout = null;
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>Use this page to detail your site's privacy policy.</p>
+
+<label>Select all 1</label>
+<input type="checkbox" onclick="CheckAll('box1', this)" />
+
+<h2>check boxes</h2>
+<input type="checkbox" class="box1" />
+<input type="checkbox" class="box1" />
+<input type="checkbox" class="box1" />
+
+<hr>
+
+<label>Select all 2</label>
+<input type="checkbox" onclick="CheckAll('box2', this)" />
+
+<h2>check boxes</h2>
+<input type="checkbox" class="box2" />
+<input type="checkbox" class="box2" />
+<input type="checkbox" class="box2" />
+
+
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<script>
+    function CheckAll(className, elem) {
+        var elements = document.getElementsByClassName(className);
+        var l = elements.length;
+
+        if (elem.checked) {
+            for (var i = 0; i < l; i++) {
+                elements[i].checked = true;
+            }
+        } else {
+            for (var i = 0; i < l; i++) {
+                elements[i].checked = false;
+            }
+        }
+    }
+    
+</script>
